@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 const HomePageRenderer = () => {
-  const myHeading: string = 'Adventure Texxxxxt';
+  const myHeading: string = 'My Website Heading';
   return (
     <div>
       <h1> {myHeading} </h1>
@@ -15,4 +15,4 @@ const HomePageRenderer = () => {
 
 // }
 
-export default HomePageRenderer;
+// export default HomePageRenderer;

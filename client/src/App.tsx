@@ -7,7 +7,7 @@ const App = () => {
     <>
       <CssBaseline />
       <div id="app">
-        <h1>App is Running, phill changed this</h1>
+        <h1>App is Running</h1>
         {/* <HomePageRenderer /> */}
       </div>
     </>

@@ -1,18 +1,19 @@
 import * as React from 'react';
+import Prompt from './prompt';
+type AppProps = { room: number}
 
-const HomePageRenderer = () => {
-  const myHeading: string = 'My Website Heading';
+const HomePageRenderer = ({room}: AppProps) => {
+  let myHeading: string = 'My Website Heading';
+  async function test() {
+    const result: Response = await fetch('google.com');
+
+  }
+  React.useEffect(() => {
+    test();
+  });
   return (
-    <div>
-      <h1> {myHeading} </h1>
-    </div>
+      <Prompt room={room} />
   )
 };
-// const OtherHeading: React.FC = () => {
-//   return (
 
-//   )
-
-// }
-
-// export default HomePageRenderer;
+export default HomePageRenderer;

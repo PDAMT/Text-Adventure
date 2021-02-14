@@ -18,4 +18,3 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
 app.listen(port, function () {
   console.log('App listening on port: ' + port);
 });
-

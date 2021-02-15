@@ -1,7 +1,7 @@
 const db = require('../models/storyModel');
 // import db from '../models/storyModel';
 import { Application, Request, Response, NextFunction } from 'express';
-import { getRoomPrompt, getPlayer, getAllPlayers } from './helperFunctions/GetHelperFunctions';
+import { getRoomPrompt, getPlayer, getAllPlayers, getAnswer } from './helperFunctions/GetHelperFunctions';
 class StoryControllerGetBlueprint {
   // createUsers(req: Request, res: Response, next: NextFunction): any {
   //   // write code here
@@ -44,23 +44,32 @@ class StoryControllerGetBlueprint {
     next();
   }
   //Get prompts 
-  async getPrompts(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async getPrompt(req: Request, res: Response, next: NextFunction): Promise<void> {
     const id = req.params.id;
+    // console.log(id);
     const queryStr: string = getRoomPrompt(id);
     const result = await db.query(queryStr);
-    const prompts: Array<
+    const prompt:
       {
-        id: number,
         prompt: string,
-        room_id: number,
-        answers: string
       }
-    > = result.rows;
-    res.locals.prompts = prompts;
+      = result.rows;
+    res.locals.prompt = prompt;
+    next();
+  }
+  //Get Answers
+  async getAnswer(req: Request, res: Response, next: NextFunction): Promise<void> {
+    const id = req.params.id;
+    const queryStr: string = getAnswer(id);
+    const result = await db.query(queryStr);
+    const answer:
+      {
+        answer: string
+      }
+      = result.rows;
+    res.locals.answer = answer;
     next();
   }
 }
-
 const StoryController = new StoryControllerGetBlueprint;
-
 export default StoryController;

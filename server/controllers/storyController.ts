@@ -36,6 +36,22 @@ class StoryControllerBlueprint {
 
     next();
   };
+
+  //Get Prompts 
+  async getPrompts(req: Request, res: Response, next: NextFunction): Promise<void> {
+  const queryStr: string = `SELECT * FROM prompts`;
+  const result = await db.query(queryStr);
+  const prompts: Array<
+    {
+      id: number,
+      prompt: string,
+      room_id: number,
+      answers: string
+    } 
+    > = result.rows;
+  res.locals.prompts = prompts;
+  next();
+  }
 }
 
 const StoryController = new StoryControllerBlueprint;

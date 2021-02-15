@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 .box {
   background-color: green;
   height: 300px;
   width: 300px;
 }
-=======
 div {
     display: flex; 
     justify-content: center;
@@ -16,4 +14,3 @@ div {
     background-color: blueviolet;
     color: rgb(254, 255, 240);  
 }
->>>>>>> d8d5ca566280bc1a27184c621117f8ee945c3022

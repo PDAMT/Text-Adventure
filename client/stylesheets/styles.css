@@ -1,0 +1,11 @@
+div {
+    display: flex; 
+    justify-content: center;
+}
+
+.promptBox{
+    height: 400px; 
+    width: 400px; 
+    background-color: blueviolet;
+    color: rgb(254, 255, 240);  
+}

@@ -1,0 +1,3 @@
+First, `npm run dev`. You should error out here.
+Second, create a direct copy of the `index.html` file located at client/components/src and -PASTE- into the automatically created dist folder.
+Run `npm run dev`. Everything should be correctly wired up from here.

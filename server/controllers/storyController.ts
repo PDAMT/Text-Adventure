@@ -1,11 +1,37 @@
-const db = require('../models/starWarsModels');
+const db = require('../models/storyModel');
 import { Application, Request, Response, NextFunction } from 'express';
 
 class StoryControllerBlueprint {
   constructor() {
 
   }
-  getUsers(req: Request, res: Response, next: NextFunction): any {
+  createUsers(req: Request, res: Response, next: NextFunction): any {
+    // write code here
+
+    next();
+  };
+  async getUsers(req: Request, res: Response, next: NextFunction): Promise<void> {
+    const queryStr: string = `SELECT * FROM users;`;
+    const result = await db.query(queryStr);
+    const players: Array<
+      {
+        id: number,
+        name: string,
+        room_1_attempts: number,
+        room_2_attempts: number,
+        room_3_attempts: number,
+        room_id: number
+      }
+    > = result.rows;
+    res.locals.users = players;
+    next();
+  }
+  updateUsers(req: Request, res: Response, next: NextFunction): any {
+    // write code here
+
+    next();
+  };
+  deleteUsers(req: Request, res: Response, next: NextFunction): any {
     // write code here
 
     next();
@@ -14,4 +40,4 @@ class StoryControllerBlueprint {
 
 const StoryController = new StoryControllerBlueprint;
 
-module.exports = StoryController;
+export default StoryController;

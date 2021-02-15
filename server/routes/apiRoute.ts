@@ -6,7 +6,6 @@ import StoryController from '../controllers/storyController'
 apiRoute.get('/users',
   StoryController.getUsers,
   function (req: Request, res: Response) {
-    console.log(res.locals.users);
     const player1 = res.locals.users[0];
     console.log("🚀 ~ file: apiRoute.ts ~ line 11 ~ player1", player1)
     const player2 = res.locals.users[1];

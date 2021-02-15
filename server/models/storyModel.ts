@@ -1,6 +1,6 @@
-const { Pool } = require('pg');
+import { Pool, QueryResult } from 'pg';
 
-const PG_URI: string = 'postgres://lsphvdli:5e_cWnTRaGxtukRofEs7mxtN33EMEu8b@ziggy.db.elephantsql.com:5432/lsphvdli ';
+const PG_URI: string = 'postgres://lsphvdli:5e_cWnTRaGxtukRofEs7mxtN33EMEu8b@ziggy.db.elephantsql.com:5432/lsphvdli';
 
 // create a new pool here using the connection string above
 const pool = new Pool({
@@ -8,7 +8,7 @@ const pool = new Pool({
 });
 
 module.exports = {
-  query: (text: string, params: any[], callback: any) => {
+  query: (text: string, params: any[], callback: (err: Error, result: QueryResult<any>) => void) => {
     console.log('executed query', text);
     return pool.query(text, params, callback);
   }

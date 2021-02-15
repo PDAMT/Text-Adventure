@@ -1,10 +1,11 @@
 const express = require('express')
 const apiRoute = express.Router()
 import { Application, Request, Response, NextFunction } from 'express';
-import StoryController from '../controllers/storyController'
+import StoryControllerGet from '../controllers/StoryControllerGet'
+import StoryControllerUpdate from '../controllers/StoryControllerUpdate';
 
 apiRoute.get('/users',
-  StoryController.getUsers,
+  StoryControllerGet.getUsers,
   function (req: Request, res: Response) {
     const player1 = res.locals.users[0];
     console.log("🚀 ~ file: apiRoute.ts ~ line 10 ~ player1", player1);
@@ -12,7 +13,7 @@ apiRoute.get('/users',
     console.log("🚀 ~ file: apiRoute.ts ~ line 11 ~ player2", player2);
     res.status(200);
   });
-  //update function
+//update function
 // GET request for prompts
 apiRoute.get('/prompts', function (req: Request, res: Response) {
   res.send('Another API route page');

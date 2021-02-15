@@ -1,20 +1,20 @@
 import * as React from 'react';
+import Prompt from './prompt';
 
-type AppProps = { message: string }
+type AppProps = { room: number}
 
-const HomePageRenderer = ({ message }: AppProps) => {
-  let myHeading: string = 'My Website Heading';
-  async function test() {
-    const result: Response = await fetch('google.com');
-    console.log(result);
-  }
-  React.useEffect(() => {
-    test();
-  });
+const HomePageRenderer = ({room}: AppProps) => {
+  // let myHeading: string = 'My Website Heading';
+  // async function test() {
+  //   const result: Response = await fetch('google.com');
+
+  // }
+  // React.useEffect(() => {
+  //   console.log('test')
+  //   test();
+  // });
   return (
-    <div>
-      <h1> {myHeading} </h1>
-    </div>
+      <Prompt room={room} />
   )
 };
 

@@ -24,6 +24,10 @@ Back-End.
 Database:
 PostgreSQL
 
+ElephantSQL login credentials:
+  login: maxreed@aveson.org
+  password: MaxAdrian123
+
 Unfinished:
 
 Gameplay:

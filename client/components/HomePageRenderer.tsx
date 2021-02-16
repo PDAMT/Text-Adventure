@@ -1,16 +1,18 @@
 import * as React from 'react';
 import Prompt from './Prompt';
 import Hint from './Hint';
-type AppProps = { room: number}
+import Terminal from './Terminal';
 
-const HomePageRenderer = ({room}: AppProps) => {
+type AppProps = { room: number};
+
+const HomePageRenderer = () => {
   return (
     <div>
-      <Prompt room={room} />
+      <Prompt  />
+      <Terminal />
       <Hint />
     </div>
-
-    )
+  )
 };
 
 export default HomePageRenderer;

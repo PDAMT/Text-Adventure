@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom'; 
-import axios, {AxiosResponse} from 'axios'; 
-
-
+import axios, {AxiosResponse} from 'axios';
+import {useContext} from 'react';
+import StoryContext from '../contexts/StoryContext';
 
 /*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*/
-import Paper from '@material-ui/core/Paper'
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-/*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*//*MATERIAL UI IMPORTS*/
 // const axios = require('axios')
 type roomProps = {
     room: number;
@@ -25,30 +25,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const roomPrompt = ({room}: roomProps) => {
-const classes = useStyles();
-const [prompt, updatePrompt] = React.useState<string | null>('Welcome Players');
+const roomPrompt = () => {
+  const classes = useStyles();
+// const [prompt, updatePrompt] = React.useState<string | null>('Welcome Players');
+  const { prompt, updatePrompt } = useContext(StoryContext);
+  console.log("🚀 ~ file: Prompt.tsx ~ line 33 ~ roomPrompt ~ prompt", prompt);
 
- React.useEffect(() => {
-    const roomNum: string = '2'; 
-    const dbQuery = '/api/prompts/' + roomNum; 
+// //  React.useEffect(() => {
+// //     const roomNum: string = '1'; 
+// //     const dbQuery = '/api/prompts/' + roomNum; 
 
-    axios.get(dbQuery)
-      .then((res: AxiosResponse) => {
-        const { prompt } = res.data[0];
-        console.log(' updated', prompt)
-        updatePrompt(prompt); 
-      })
-      .catch((err: 'string') => console.log(err));
-    },[]);
+    // axios.get(dbQuery)
+    //   .then((res: AxiosResponse) => {
+    //     const { prompt } = res.data[0];
+    //     console.log(' updated', prompt)
+    //     updatePrompt(prompt); 
+    //   })
+    //   .catch((err: 'string') => console.log(err));
+    // },[]);
 
     return (
         <div className="promptBox">
             {/* <div className="promptText">{prompt}</div> */}
-            <Paper className={classes.root} elevation={12}>{prompt}</Paper>
-        </div>
+            <Button onClick={
+              (e) => {
+                e.preventDefault;
+                updatePrompt('randomString')
+              }
+            }>
+              Test Button!
+            </Button>
+            <div>{prompt}</div>
+            </div>
     )
-}
-
-export default roomPrompt; 
-
+  }    
+ export default roomPrompt;

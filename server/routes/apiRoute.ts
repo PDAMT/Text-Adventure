@@ -1,7 +1,7 @@
 const express = require('express');
 const apiRoute = express.Router();
 import { Application, Request, Response, NextFunction } from 'express';
-import StoryControllerGet from '../controllers/StoryControllerGet';
+import StoryControllerGet from '../controllers/StoryControllerGet'
 import StoryControllerUpdate from '../controllers/StoryControllerUpdate';
 
 apiRoute.get('/users/:id',
@@ -44,3 +44,4 @@ apiRoute.get('/rooms/:id', StoryControllerGet.getAnswer, (req: Request, res: Res
 });
 
 export default apiRoute;
+

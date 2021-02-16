@@ -1,20 +1,14 @@
 import * as React from 'react';
 import Prompt from './prompt';
-
+import Terminal from './Terminal';
 type AppProps = { room: number}
 
 const HomePageRenderer = ({room}: AppProps) => {
-  // let myHeading: string = 'My Website Heading';
-  // async function test() {
-  //   const result: Response = await fetch('google.com');
-
-  // }
-  // React.useEffect(() => {
-  //   console.log('test')
-  //   test();
-  // });
   return (
+    <div>
       <Prompt room={room} />
+      <Terminal />
+    </div>
   )
 };
 

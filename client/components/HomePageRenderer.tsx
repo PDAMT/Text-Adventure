@@ -1,21 +1,16 @@
 import * as React from 'react';
-import Prompt from './prompt';
-
+import Prompt from './Prompt';
+import Hint from './Hint';
 type AppProps = { room: number}
 
 const HomePageRenderer = ({room}: AppProps) => {
-  // let myHeading: string = 'My Website Heading';
-  // async function test() {
-  //   const result: Response = await fetch('google.com');
-
-  // }
-  // React.useEffect(() => {
-  //   console.log('test')
-  //   test();
-  // });
   return (
+    <div>
       <Prompt room={room} />
-  )
+      <Hint />
+    </div>
+
+    )
 };
 
 export default HomePageRenderer;

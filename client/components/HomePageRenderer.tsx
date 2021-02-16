@@ -8,8 +8,3 @@ const HomePageRenderer = ({room}: AppProps) => {
     <div>
       <Prompt room={room} />
       <Terminal />
-    </div>
-  )
-};
-
-export default HomePageRenderer;

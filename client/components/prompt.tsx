@@ -25,38 +25,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const roomPrompt = () => {
+const Prompt = () => {
+  
   const classes = useStyles();
-// const [prompt, updatePrompt] = React.useState<string | null>('Welcome Players');
-  const { prompt, updatePrompt } = useContext(StoryContext);
-  console.log("🚀 ~ file: Prompt.tsx ~ line 33 ~ roomPrompt ~ prompt", prompt);
-
-// //  React.useEffect(() => {
-// //     const roomNum: string = '1'; 
-// //     const dbQuery = '/api/prompts/' + roomNum; 
-
-    // axios.get(dbQuery)
-    //   .then((res: AxiosResponse) => {
-    //     const { prompt } = res.data[0];
-    //     console.log(' updated', prompt)
-    //     updatePrompt(prompt); 
-    //   })
-    //   .catch((err: 'string') => console.log(err));
-    // },[]);
-
+  const { prompt, updatePrompt , room} = useContext(StoryContext);
+  const getPromptData = () => {
+    const roomStr: string = room.toString(); 
+    axios.get(`/api/prompts/${roomStr}`)
+      .then((res: AxiosResponse) => {
+        const { prompt } = res.data[0];
+        console.log('updated ', prompt)
+        updatePrompt(prompt); 
+      })
+      .catch((err: 'string') => console.log(err));
+  } 
+  React.useEffect(() => {
+    getPromptData();
+  })
     return (
         <div className="promptBox">
-            {/* <div className="promptText">{prompt}</div> */}
-            <Button onClick={
-              (e) => {
-                e.preventDefault;
-                updatePrompt('randomString')
-              }
-            }>
-              Test Button!
-            </Button>
             <div>{prompt}</div>
-            </div>
+        </div>
     )
   }    
- export default roomPrompt;
+ export default Prompt;

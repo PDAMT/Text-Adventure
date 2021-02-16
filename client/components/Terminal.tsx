@@ -17,16 +17,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Terminal() {
-
   const classes = useStyles();
-
   let [query, setQuery] = useState("");
   const inputRef = React.createRef();
   const [count, setCount] = useState(0);
-  const { hint, updateHint, answer, updateAnswer, room, updateRoom } = useContext(StoryContext);
+  const { answer, updateAnswer, room, updateRoom } = useContext(StoryContext);
+
 
   const getAnswerData = () => {
-    const roomStr = room.toString();
+    const roomStr: string = room.toString();
     axios.get(`/api/rooms/${roomStr}`)
       .then((res: AxiosResponse) => {
         const { answer } = res.data[0];
@@ -46,15 +45,17 @@ function Terminal() {
     setQuery(query=event.target.value)
     console.log("user input: ", event.target.value)
   }
+  //Tests user input to the correct answer
   const handleSubmit = (event: any) => {
     event.preventDefault();
     if(query === answer) {
       updateRoom(room + 1)
       updateAnswer(getAnswerData());
-      console.log("Answer is correct");
-      console.log("======================checks out==============");
+     //console.log("Answer is correct");
+     // console.log("======================checks out==============");
     }    
   }
+
   //renders textbox and invokes query with every change, and invokes checker when the form is submitted
   return (
     <div>

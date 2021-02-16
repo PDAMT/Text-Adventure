@@ -1,17 +1,15 @@
 const db = require('../models/storyModel');
-// import db from '../models/storyModel';
 import { Application, Request, Response, NextFunction } from 'express';
 import { getRoomPrompt, getPlayer, getAllPlayers, getAnswer, getHint } from './helperFunctions/GetHelperFunctions';
-class StoryControllerGetBlueprint {
-  // createUsers(req: Request, res: Response, next: NextFunction): any {
-  //   // write code here
 
-  //   next();
-  // };
-  // Get all players
+//define middleware
+class StoryControllerGetBlueprint {
+
   async getUsers(req: Request, res: Response, next: NextFunction): Promise<void> {
     const queryStr: string = getAllPlayers();
     const result = await db.query(queryStr);
+
+    //TypeScript type definition for players object
     const players: Array<
       {
         id: number,
@@ -30,6 +28,8 @@ class StoryControllerGetBlueprint {
     const id = req.params.id;
     const queryStr: string = getPlayer(id)
     const result = await db.query(queryStr);
+
+    //TypeScript type definition for players object
     const player:
       {
         id: number,
@@ -43,12 +43,14 @@ class StoryControllerGetBlueprint {
     id === '1' ? res.locals.player1 = player : res.locals.player2 = player;
     next();
   }
+
   //Get prompts 
   async getPrompt(req: Request, res: Response, next: NextFunction): Promise<void> {
     const id = req.params.id;
-    // console.log(id);
     const queryStr: string = getRoomPrompt(id);
     const result = await db.query(queryStr);
+
+    //TypeScript type definition of prompt object
     const prompt:
       {
         prompt: string,
@@ -57,11 +59,14 @@ class StoryControllerGetBlueprint {
     res.locals.prompt = prompt;
     next();
   }
+
   //Get Answers
   async getAnswer(req: Request, res: Response, next: NextFunction): Promise<void> {
     const id = req.params.id;
     const queryStr: string = getAnswer(id);
     const result = await db.query(queryStr);
+
+    //Typescript type definition of answer object
     const answer:
       {
         answer: string
@@ -70,11 +75,14 @@ class StoryControllerGetBlueprint {
     res.locals.answer = answer;
     next();
   }
+
   //Get Hints
   async getHint(req: Request, res: Response, next: NextFunction): Promise<void> {
     const id = req.params.id;
     const queryStr: string = getHint(id);
     const result = await db.query(queryStr);
+    
+    //Typescript type definition of hint object
     const hint:
       {
         hint: string

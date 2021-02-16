@@ -13,7 +13,6 @@ class StoryControllerUpdateBlueprint {
   };
   deleteUsers(req: Request, res: Response, next: NextFunction): any {
     // write code here
-
     next();
   };
 }

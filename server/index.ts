@@ -1,28 +1,28 @@
 import * as express from "express";
 import { Application, Request, Response, NextFunction } from 'express';
-import * as path from 'path'; // NEW
+import * as path from 'path';
 import apiRoute from './routes/apiRoute';
 import cors from 'cors';
-//ADDED CORS BELOW
-// const cors = require('cors');
-
-
 
 const app = express.default();
 
-//INVOKED CORS BELOW
+// corse() disable's all NO-CORS errors 
 app.use(cors());
-// const port = process.env.PORT || 3000;
+
 const port: number = 3000;
-const DIST_DIR = path.resolve(__dirname, '../dist'); // NEW
-const HTML_FILE = path.join(DIST_DIR, 'index.html'); // NEW
+const DIST_DIR = path.resolve(__dirname, '../dist');
+const HTML_FILE = path.join(DIST_DIR, 'index.html');
 
-app.use(express.static(DIST_DIR)); // NEW
+//server static file
+app.use(express.static(DIST_DIR));
 
+//route to api endpoint
 app.use('/api', apiRoute);
+
+//serve index.html on root enpoint
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
   console.log(`Endpoint: '/' being reached.`);
-  res.status(200).sendFile(HTML_FILE); // EDIT
+  res.status(200).sendFile(HTML_FILE);
 });
 
 app.listen(port, function () {

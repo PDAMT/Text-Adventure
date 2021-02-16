@@ -1,5 +1,6 @@
 import { Pool, QueryResult } from 'pg';
 
+//connection to ElephantSQL
 const PG_URI: string = 'postgres://lsphvdli:5e_cWnTRaGxtukRofEs7mxtN33EMEu8b@ziggy.db.elephantsql.com:5432/lsphvdli';
 
 // create a new pool here using the connection string above

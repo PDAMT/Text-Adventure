@@ -1,3 +1,5 @@
+
+//PostgreSQL query strings
 class GetHelperFunctionsBlueprint {
   getAllPlayers(): string {
     return `SELECT * FROM users`;
@@ -16,8 +18,11 @@ class GetHelperFunctionsBlueprint {
     return `SELECT hint FROM hints WHERE hints.room_id = ${id}`;
   }
 }
+
+//reference to query strings
 const GetHelperFunctions = new GetHelperFunctionsBlueprint;
 
+//store query strings on objects exported to controllers
 const getRoomPrompt = GetHelperFunctions.getRoomPrompt;
 const getPlayer = GetHelperFunctions.getPlayer;
 const getAllPlayers = GetHelperFunctions.getAllPlayers;

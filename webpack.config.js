@@ -5,7 +5,8 @@ module.exports = {
   entry: ['babel-polyfill', './client/src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    
   },
   module: {
     rules: [
@@ -25,6 +26,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
+    headers: { 'Access-Control-Allow-Origin': '*' },
     hot: true
   },
   resolve: {

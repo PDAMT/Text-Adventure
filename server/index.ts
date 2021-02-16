@@ -18,6 +18,7 @@ const DIST_DIR = path.resolve(__dirname, '../dist'); // NEW
 const HTML_FILE = path.join(DIST_DIR, 'index.html'); // NEW
 
 app.use(express.static(DIST_DIR)); // NEW
+
 app.use('/api', apiRoute);
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
   console.log(`Endpoint: '/' being reached.`);

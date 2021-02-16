@@ -1,36 +1,73 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
+import axios, {AxiosResponse} from 'axios';
+import StoryContext from '../contexts/StoryContext';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(1),
+      width: theme.spacing(16),
+      height: theme.spacing(16),
+    }, 
+  },
+}));
 
 function Terminal() {
+  const classes = useStyles();
   let [query, setQuery] = useState("");
   const inputRef = React.createRef();
   const [count, setCount] = useState(0);
+  const { answer, updateAnswer, room, updateRoom } = useContext(StoryContext);
 
 
-  const checker = (e:any) => {
-    e.preventDefault();
-    console.log('query',query);
-    if (query === "test_input") console.log("to the next room");
-    else setCount(count + 1);
-    if (count === 2) console.log("displaying hint");
-  };
+  const getAnswerData = () => {
+    const roomStr: string = room.toString();
+    axios.get(`http://localhost:3000/api/rooms/${roomStr}`)
+      .then((res: AxiosResponse) => {
+        const { answer } = res.data[0];
+        updateAnswer(answer);
+      })
+      .catch(err => console.error(err));
+  }
 
+  //set initial state by fetching DB
   useEffect(() => {
-    console.log(`you have updated your query to ${query}`);
-  }, [query]);
+    getAnswerData();
+  })
+  
+  
+  //With each character inputted, the query string which holds the users input is updated by said character
+  const handleChange = (event:any) => {
+    event.preventDefault();
+    setQuery(query=event.target.value)
+    console.log("user input: ", event.target.value)
+  }
+  //Tests user input to the correct answer
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    if(query === answer) {
+      updateRoom(room + 1)
+      updateAnswer(getAnswerData());
+     //console.log("Answer is correct");
+     // console.log("======================checks out==============");
+    }    
+  }
 
-  const updateQuery = (event:any) => {
-    setQuery(query = event.target.value);
-  };
-
+  //renders textbox and invokes query with every change, and invokes checker when the form is submitted
   return (
-    <div>
-      <form onSubmit={checker}>
-        <input type="text" placeholder="Enter Text here" onChange={updateQuery}/>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="user-input" placeholder="Enter Text here" value={query} onChange={handleChange} />
         <input type="submit" />
-        <h4>{query}</h4>
       </form>
+      <Paper className={classes.root} elevation={6}>{answer}</Paper>
     </div>
-  );
+  )
 }
+
 
 export default Terminal;

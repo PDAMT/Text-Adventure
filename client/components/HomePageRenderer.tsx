@@ -1,17 +1,19 @@
 import * as React from 'react';
-import Prompt from './prompt';
+import Prompt from './Prompt';
+import Hint from './Hint';
 import Terminal from './Terminal';
-import Hint from './hint';
 
-type AppProps = { room: number}
+type AppProps = { room: number};
 
-const HomePageRenderer = ({room}: AppProps) => {
-
+const HomePageRenderer = () => {
   return (
-    <div>
-      <Prompt room={room} />
-      <Terminal/>
-      <Hint />
+    <div className="home-container lobby">
+      <div className="top-container">
+        <Prompt  />
+        <Hint />
+        
+      </div>
+      <Terminal />
     </div>
   )
 };

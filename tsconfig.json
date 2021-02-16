@@ -15,7 +15,7 @@
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
   "rootDir": "src",
 }

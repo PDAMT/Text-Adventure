@@ -31,7 +31,7 @@ const Prompt = () => {
   const { prompt, updatePrompt , room} = useContext(StoryContext);
   const getPromptData = () => {
     const roomStr: string = room.toString(); 
-    axios.get(`/api/prompts/${roomStr}`)
+    axios.get(`http://localhost:3000/api/prompts/${roomStr}`)
       .then((res: AxiosResponse) => {
         const { prompt } = res.data[0];
         console.log('updated ', prompt)

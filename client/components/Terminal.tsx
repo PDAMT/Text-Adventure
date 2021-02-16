@@ -26,7 +26,7 @@ function Terminal() {
 
   const getAnswerData = () => {
     const roomStr: string = room.toString();
-    axios.get(`/api/rooms/${roomStr}`)
+    axios.get(`http://localhost:3000/api/rooms/${roomStr}`)
       .then((res: AxiosResponse) => {
         const { answer } = res.data[0];
         updateAnswer(answer);

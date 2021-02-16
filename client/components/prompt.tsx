@@ -30,7 +30,7 @@ const Prompt = () => {
   const classes = useStyles();
   const { prompt, updatePrompt , room} = useContext(StoryContext);
   const getPromptData = () => {
-    const roomStr: string = room.toString(); 
+    const roomStr: stri = room.toString(); 
     axios.get(`/api/prompts/${roomStr}`)
       .then((res: AxiosResponse) => {
         const { prompt } = res.data[0];

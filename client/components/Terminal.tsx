@@ -18,16 +18,30 @@ const useStyles = makeStyles((theme) => ({
 
 function Terminal() {
   const classes = useStyles();
-  let [query, setQuery] = useState("");
-  const inputRef = React.createRef();
+
+  //hook text that user types into terminal
+  let [userText, setText] = useState("");
+
+  //count and setCount not currently functional
+  //intended use: render hint text upon 3 failed submissions
   const [count, setCount] = useState(0);
+
+  //destructure state relevant to this component
+  //Context articulated in contexts/StoryContext.tsx
   const { answer, updateAnswer, room, updateRoom } = useContext(StoryContext);
 
-
+  //Database querry declared as a function definition to be called by useEffect
   const getAnswerData = () => {
+
+    //database and Context API expect room to be of type string
     const roomStr: string = room.toString();
+
+    //append stringified room number to end of url to access 
+    //the next correct answer from database
     axios.get(`http://localhost:3000/api/rooms/${roomStr}`)
       .then((res: AxiosResponse) => {
+
+        //database returns an array of objects.
         const { answer } = res.data[0];
         updateAnswer(answer);
       })
@@ -40,31 +54,30 @@ function Terminal() {
   })
   
   
-  //With each character inputted, the query string which holds the users input is updated by said character
+  //updates state upon every keystroke of user
   const handleChange = (event:any) => {
     event.preventDefault();
-    setQuery(query=event.target.value)
-    console.log("user input: ", event.target.value)
+    setText(userText=event.target.value)
   }
-  //Tests user input to the correct answer
+
+  //compares state to correct answer
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    if(query === answer) {
+    if(userText === answer) {
+
+      //if user submits the correct answer, increment room to render next room and fetch next answer from DB
       updateRoom(room + 1)
       updateAnswer(getAnswerData());
-     //console.log("Answer is correct");
-     // console.log("======================checks out==============");
     }    
   }
 
-  //renders textbox and invokes query with every change, and invokes checker when the form is submitted
+  //renders textbox and invokes userText with every change, and invokes checker when the form is submitted
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
-        <input type="text" name="user-input" placeholder="Enter Text here" value={query} onChange={handleChange} />
+        <input type="text" name="user-input" placeholder="Enter Text here" value={userText} onChange={handleChange} />
         <input type="submit" />
       </form>
-      <Paper className={classes.root} elevation={6}>{answer}</Paper>
     </div>
   )
 }

@@ -42,6 +42,9 @@ Prompt.tsx:
 webpack.config.js
   - there is no proxy between 3000 and 8080. This has lead to confusing behavior between Localhost:3000 and Localhost:8080, where one would break but the other would function properly.
 
+Client-server interaction bug:
+  - whenever a user is typing into the terminal, the front end components are constantly sending AJAX calls to DB, which are being logged to VSCode's terminal.
+
 Note: 
 
 Currently, when 'npm run dev' is executed, the root file tree is rendered to the browser. We're unsure why, and the workaround is to run 'npm run build' to bundle the front end.

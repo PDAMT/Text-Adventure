@@ -35,9 +35,10 @@ function Terminal() {
   }
 
   //set initial state by fetching DB
-  if(room === 1){
+  useEffect(() => {
     getAnswerData();
-  }
+  })
+  
   
   //With each character inputted, the query string which holds the users input is updated by said character
   const handleChange = (event:any) => {

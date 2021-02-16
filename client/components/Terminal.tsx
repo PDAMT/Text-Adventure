@@ -34,7 +34,7 @@ function Terminal() {
       })
       .catch(err => console.error(err));
   }
-  
+
   //set initial state by fetching DB
   if(room === 1){
     getAnswerData();

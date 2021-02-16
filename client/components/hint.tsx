@@ -24,16 +24,13 @@ const Hint = () => {
       headers:{},
       params: {"room": room },
     }
-
-
-    Axios.get('/api/hints')
-    .then((response: AxiosResponse) => {
-      console.log("🚀 ~ file: Hint.tsx ~ line 29 ~ .then ~ response", response)
-      setHint(response.data)
-    })
-    .catch(err => console.log(err));
-  });
- 
+    Axios.get('api/hint')
+      .then((response: AxiosResponse) => {
+        console.log("🚀 ~ file: Hint.tsx ~ line 29 ~ .then ~ response", response)
+        setHint(response.data)
+      })
+      .catch(err => console.log(err));
+    });
   return (
   <div className="box">
       Hint: <br />
@@ -41,5 +38,8 @@ const Hint = () => {
   </div>
   )
 };
- 
+
+};
+
+
 export default Hint;

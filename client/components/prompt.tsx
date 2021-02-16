@@ -29,20 +29,3 @@ const roomPrompt = ({room}: roomProps) => {
 }
 
 export default roomPrompt; 
-
-// type AppProps = { message: string }
-
-// const HomePageRenderer = ({ message }: AppProps) => {
-//   let myHeading: string = 'My Website Heading';
-//   async function test() {
-//     const result: Response = await fetch('google.com');
-//   }
-//   React.useEffect(() => {
-//     test();
-//   });
-//   return (
-//     <div>
-//       <h1> {myHeading} </h1>
-//     </div>
-//   )
-// };

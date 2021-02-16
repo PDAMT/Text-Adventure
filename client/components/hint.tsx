@@ -4,94 +4,30 @@ const { useState } = React;
 
 interface Get {
   method: string,
-  url: string,
-  data: object,
   headers: object,
-  params:object,
 }
 
 const Hint = () => {
   
   const [hintText, setHint] = useState("Try turning on the lights");
-  const [room, setRoom] = useState(1);
+  const [room, setRoom] = useState("1");
   
   React.useEffect(() => {
     
-    const options: Get = {
-      method: "GET",
-      url:'http://localhost:3000/api/hints',
-      data:{},
-      headers:{},
-      params: {"room": room },
-    }
-    Axios.get('api/hint')
-      .then((response: AxiosResponse) => {
-        console.log("🚀 ~ file: Hint.tsx ~ line 29 ~ .then ~ response", response)
-        setHint(response.data)
+    fetch("http://localhost:3000/api/hints/1")
+      .then((response:any) => {
+        console.log("about to parse")
+        return response.json();
       })
-      .catch(err => console.log(err));
-    });
+      .then(result => setHint(result[0].hint))
+      .catch(error => console.log('error', error));
+  });
+
   return (
   <div className="box">
       Hint: <br />
       {hintText}
   </div>
   )
-};
-
-};
-
-
-};
-
-
-
-};
-
-
-
-};
-
-
-};
-
-
-
-};
-
-
-
-};
-
-
-
-};
-
-
-};
-
-
-
-};
-
-
-
-};
-
-
-
-};
-
-
-};
-
-
-
-};
-
-
-
-};
-
-
+}
 export default Hint;

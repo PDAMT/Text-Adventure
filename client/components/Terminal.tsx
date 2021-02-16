@@ -10,7 +10,7 @@ function Terminal() {
   const { hint, updateHint, answer, updateAnswer,room, updateRoom} = useContext(StoryContext);
  
   const getAnswerData = () => {
-    axios.get('url') 
+    axios.get('/rooms/:id') 
     .then((res: AxiosResponse) => console.log(res))
     .catch(err => console.error(err));
 }

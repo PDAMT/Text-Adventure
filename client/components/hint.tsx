@@ -13,8 +13,8 @@ const Hint = () => {
   const [room, setRoom] = useState("1");
   
   React.useEffect(() => {
-    
-    fetch("http://localhost:3000/api/hints/1")
+    const url:string = "http://localhost:3000/api/hints/" + room;
+    fetch(url)
       .then((response:any) => {
         console.log("about to parse")
         return response.json();

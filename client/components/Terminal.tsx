@@ -59,7 +59,7 @@ function Terminal() {
 
   //renders textbox and invokes query with every change, and invokes checker when the form is submitted
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
         <input type="text" name="user-input" placeholder="Enter Text here" value={query} onChange={handleChange} />
         <input type="submit" />

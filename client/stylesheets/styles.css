@@ -1,16 +1,83 @@
 .box {
-  background-color: green;
+  background-color: #f7f7f7;
   height: 300px;
-  width: 300px;
+  width: 400px;
+  padding: 40px; 
+  box-shadow: 0 15px 25px rgb(0 0 0 / 60%);
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-size: 1.5em;  
 }
 div {
-    display: flex; 
-    justify-content: center;
+    /* display: flex; 
+    justify-content: center; */
 }
 
-.promptBox{
-    height: 400px; 
-    width: 400px; 
-    background-color: blueviolet;
-    color: rgb(254, 255, 240);  
+.promptBox {
+    width: 400px;
+    padding: 40px; 
+    background-color: #0b141f;
+    box-shadow: 0 15px 25px rgb(0 0 0 / 60%);
+    border-radius: 10px;
+    color: #ffff;
+    font-family: sans-serif;
+    font-size: 1.5em;  
+}
+
+.top-container,
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+.top-container > div {
+  margin: 0.5em;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5%;
+  margin: auto;
+  height: 100vh;
+  justify-content: center;
+}
+
+.lobby {
+  background: #527ba5;
+}
+
+.promptText {
+  text-align: center;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #527ba5;
+}
+
+form input[type="submit"] {
+  width: 50%;
+  margin: auto;
+  transform: translateY(1em);
+  background: #2f4ad0;
+  padding: 8px 16px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 8px 6px -6px #555;
+}
+
+.home-container .form-container {
+  margin-top: 5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
 }

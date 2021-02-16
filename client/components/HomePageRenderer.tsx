@@ -7,10 +7,13 @@ type AppProps = { room: number};
 
 const HomePageRenderer = () => {
   return (
-    <div>
-      <Prompt  />
+    <div className="home-container lobby">
+      <div className="top-container">
+        <Prompt  />
+        <Hint />
+        
+      </div>
       <Terminal />
-      <Hint />
     </div>
   )
 };

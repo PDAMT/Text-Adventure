@@ -5,7 +5,7 @@ function Terminal() {
   let [query, setQuery] = useState("");
   const inputRef = React.createRef();
   const [count, setCount] = useState(0);
-
+  const 
 
   const checker = (e:any) => {
     e.preventDefault();

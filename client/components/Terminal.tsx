@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react';
-// import "./styles.css";
 
 function Terminal() {
   let [query, setQuery] = useState("");

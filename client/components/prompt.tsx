@@ -30,7 +30,7 @@ const Prompt = () => {
   const classes = useStyles();
   const { prompt, updatePrompt , room} = useContext(StoryContext);
   const getPromptData = () => {
-    const roomStr: stri = room.toString(); 
+    const roomStr: stringg = room.toString(); 
     axios.get(`/api/prompts/${roomStr}`)
       .then((res: AxiosResponse) => {
         const { prompt } = res.data[0];
@@ -60,5 +60,6 @@ const Prompt = () => {
             <div>{prompt}</div>
         </div>
     )
-  }    
- export default Prompt;
+}
+
+export default Prompt;

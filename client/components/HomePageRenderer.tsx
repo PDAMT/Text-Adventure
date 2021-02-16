@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Prompt from './Prompt';
 import Terminal from './Terminal';
-import Hint from './Hint';
+import Hint from './hint';
 
 type AppProps = { room: number}
 

@@ -10,6 +10,7 @@ interface StoryContextState {
   room: number, 
   updateRoom: Dispatch<SetStateAction<number>>, 
   answer: string,
+  updateAnswer: Dispatch<SetStateAction<string>>
 }
 
 const StoryContext = React.createContext<any|undefined>(undefined);
@@ -27,7 +28,8 @@ const StoryContextProvider = ({ children }: any) => {
     updateHint, 
     room,
     updateRoom,
-    answer
+    answer,
+    updateAnswer
   };
   return (
     <StoryContext.Provider value={StoryState}>

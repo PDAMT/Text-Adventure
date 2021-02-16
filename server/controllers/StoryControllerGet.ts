@@ -1,7 +1,7 @@
 const db = require('../models/storyModel');
 // import db from '../models/storyModel';
 import { Application, Request, Response, NextFunction } from 'express';
-import { getRoomPrompt, getPlayer, getAllPlayers, getAnswer } from './helperFunctions/GetHelperFunctions';
+import { getRoomPrompt, getPlayer, getAllPlayers, getAnswer, getHint } from './helperFunctions/GetHelperFunctions';
 class StoryControllerGetBlueprint {
   // createUsers(req: Request, res: Response, next: NextFunction): any {
   //   // write code here
@@ -68,6 +68,19 @@ class StoryControllerGetBlueprint {
       }
       = result.rows;
     res.locals.answer = answer;
+    next();
+  }
+  //Get Hints
+  async getHint(req: Request, res: Response, next: NextFunction): Promise<void> {
+    const id = req.params.id;
+    const queryStr: string = getHint(id);
+    const result = await db.query(queryStr);
+    const hint:
+      {
+        hint: string
+      }
+      = result.rows;
+    res.locals.hint = hint;
     next();
   }
 }

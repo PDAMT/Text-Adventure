@@ -43,5 +43,9 @@ apiRoute.get('/rooms/:id', StoryControllerGet.getAnswer, (req: Request, res: Res
   res.status(200).send(res.locals.answer);
 });
 
-export default apiRoute;
+apiRoute.get('/hints/:id', StoryControllerGet.getHint, (req: Request, res: Response) => {
+  res.setHeader('content-type', 'application/json');
+  res.status(200).send(res.locals.hint);
+});
 
+export default apiRoute;

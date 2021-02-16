@@ -12,6 +12,9 @@ class GetHelperFunctionsBlueprint {
   getAnswer(id: string): string {
     return `SELECT answer FROM rooms WHERE rooms.id = ${id}`;
   }
+  getHint(id: string): string {
+    return `SELECT hint FROM hints WHERE hints.room_id = ${id}`;
+  }
 }
 const GetHelperFunctions = new GetHelperFunctionsBlueprint;
 
@@ -19,12 +22,14 @@ const getRoomPrompt = GetHelperFunctions.getRoomPrompt;
 const getPlayer = GetHelperFunctions.getPlayer;
 const getAllPlayers = GetHelperFunctions.getAllPlayers;
 const getAnswer = GetHelperFunctions.getAnswer;
+const getHint = GetHelperFunctions.getHint;
 
 export {
   getRoomPrompt,
   getPlayer,
   getAllPlayers,
-  getAnswer
+  getAnswer,
+  getHint
 };
 
 export default GetHelperFunctions;

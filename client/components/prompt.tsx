@@ -30,7 +30,6 @@ const roomPrompt = ({room}: roomProps) => {
 
 export default roomPrompt; 
 
-
 // type AppProps = { message: string }
 
 // const HomePageRenderer = ({ message }: AppProps) => {

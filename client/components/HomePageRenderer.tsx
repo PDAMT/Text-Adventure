@@ -1,6 +1,8 @@
 import * as React from 'react';
-import Prompt from './prompt';
+import Prompt from './Prompt';
 import Terminal from './Terminal';
+import Hint from './Hint';
+
 type AppProps = { room: number}
 
 const HomePageRenderer = ({room}: AppProps) => {
@@ -9,8 +11,8 @@ const HomePageRenderer = ({room}: AppProps) => {
     <div>
       <Prompt room={room} />
       <Terminal/>
+      <Hint />
     </div>
-
   )
 };
 

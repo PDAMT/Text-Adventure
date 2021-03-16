@@ -1,8 +1,9 @@
 import React,{useState, useEffect, useContext} from 'react';
 import axios, {AxiosResponse} from 'axios';
 import StoryContext from '../contexts/StoryContext';
-import { makeStyles } from '@material-ui/core/styles';
+import { jssPreset, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import { Backdrop } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {

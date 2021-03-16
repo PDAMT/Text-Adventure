@@ -54,3 +54,9 @@ Note:
 Currently, when 'npm run dev' is executed, the root file tree is rendered to the browser. We're unsure why, and the workaround is to run 'npm run build' to bundle the front end.
 Then, copy index.html from Text-Adventure/src and paste it into dist, which store the output of the bundled front-end. 
 We think the problem lies in the pathing on line 14 of Text-Adventure/client/src/index.ts.
+
+
+
+
+
+
